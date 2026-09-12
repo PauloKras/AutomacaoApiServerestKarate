@@ -1,7 +1,7 @@
 Feature: Testes da API Serverest
 
   Background:
-    * url config.baseUrl
+    * url baseUrl
 
   Scenario: Consultar lista de usuários
     Given path '/usuarios'
@@ -12,7 +12,7 @@ Feature: Testes da API Serverest
 
   Scenario: Realizar login de usuário
     Given path '/login'
-    And request { email: config.user.email, password: config.user.password }
+    And request { email: '#(user.email)', password: '#(user.password)' }
     When method POST
     Then status 200
     And match response contains { authorization: '#string' }
