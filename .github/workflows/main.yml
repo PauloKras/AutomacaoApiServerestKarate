@@ -1,0 +1,22 @@
+name: Karate API Tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+
+    - name: Run Karate tests
+      env:
+        KARATE_BASE_URL: ${{ secrets.KARATE_BASE_URL }}
+        KARATE_USER_EMAIL: ${{ secrets.KARATE_USER_EMAIL }}
+        KARATE_USER_PASSWORD: ${{ secrets.KARATE_USER_PASSWORD }}
+      run: mvn clean test

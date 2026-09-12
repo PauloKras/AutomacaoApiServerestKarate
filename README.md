@@ -22,6 +22,19 @@ Antes de executar os testes, certifique-se de ter os seguintes softwares instala
 *   `src/test/java/com/serverest/karate/serverest.feature`: O arquivo principal de feature do Karate, contendo os cenários de teste para a API Serverest.
 *   `src/test/java/com/serverest/karate/ServerestRunner.java`: A classe Runner do JUnit para executar os testes Karate.
 
+## Integração Contínua (CI/CD)
+
+Este projeto utiliza [GitHub Actions](https://docs.github.com/actions) para automação de Integração Contínua (CI). Um pipeline é executado automaticamente a cada commit (push) e a cada Pull Request para a branch `main`.
+
+O workflow de CI ([`.github/workflows/karate-test.yml`](.github/workflows/karate-test.yml)) realiza as seguintes etapas:
+
+1.  **Checkout do código**: Clona o repositório.
+2.  **Configuração do JDK**: Configura o ambiente Java (JDK 17).
+3.  **Build com Maven**: Compila o projeto utilizando Maven.
+4.  **Execução dos Testes Karate**: Executa os testes de API definidos com o Karate Framework.
+
+O status da execução da pipeline pode ser visualizado na seção "Actions" do repositório GitHub, onde você pode ver os detalhes de cada execução, incluindo logs e resultados dos testes.
+
 ## Como Executar os Testes
 
 Para executar todos os testes automatizados, navegue até a raiz do projeto no terminal e execute o seguinte comando Maven:
