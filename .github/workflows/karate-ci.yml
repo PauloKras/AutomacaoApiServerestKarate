@@ -19,8 +19,4 @@ jobs:
       run: mvn clean install -DskipTests
 
     - name: Run Karate tests
-      env:
-        KARATE_BASE_URL: ${{ secrets.BASEURL }}
-        KARATE_USER_EMAIL: ${{ secrets.USER_EMAIL }}
-        KARATE_USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-      run: mvn test
+      run: mvn test -DBASEURL="${{ secrets.BASEURL }}" -DUSER_EMAIL="${{ secrets.USER_EMAIL }}" -DUSER_PASSWORD="${{ secrets.USER_PASSWORD }}"
