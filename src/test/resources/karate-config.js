@@ -10,10 +10,10 @@ function fn() {
   props.load(stream);
   stream.close();
 
-  config.baseUrl = karate.properties["KARATE_BASE_URL"] || props.get("baseUrl");
+  config.baseUrl = karate.properties["BASEURL"] || props.get("baseUrl");
   config.user = {
-    email: karate.properties["KARATE_USER_EMAIL"] || props.get("user_email"),
-    password: karate.properties["KARATE_USER_PASSWORD"] || props.get("user_password")
+    email: karate.properties["USER_EMAIL"] || props.get("user_email"),
+    password: karate.properties["USER_PASSWORD"] || props.get("user_password")
   };
 
   return config;
