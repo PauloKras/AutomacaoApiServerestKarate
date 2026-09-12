@@ -24,14 +24,14 @@ Antes de executar os testes, certifique-se de ter os seguintes softwares instala
 
 ## Integração Contínua (CI/CD)
 
-Este projeto utiliza [GitHub Actions](https://docs.github.com/actions) para automação de Integração Contínua (CI). Um pipeline é executado automaticamente a cada commit (push) e a cada Pull Request para a branch `main`.
+Este projeto utiliza [GitHub Actions](https://docs.github.com/actions) para automação de Integração Contínua (CI). Um pipeline é executado automaticamente a cada commit (push).
 
-O workflow de CI ([`.github/workflows/karate-test.yml`](.github/workflows/karate-test.yml)) realiza as seguintes etapas:
+O workflow de CI ([`.github/workflows/karate-ci.yml`](.github/workflows/karate-ci.yml)) realiza as seguintes etapas:
 
 1.  **Checkout do código**: Clona o repositório.
 2.  **Configuração do JDK**: Configura o ambiente Java (JDK 17).
-3.  **Build com Maven**: Compila o projeto utilizando Maven.
-4.  **Execução dos Testes Karate**: Executa os testes de API definidos com o Karate Framework.
+3.  **Build com Maven**: Compila o projeto utilizando Maven (ignorando a execução dos testes com `-DskipTests`).
+4.  **Execução dos Testes Karate**: Executa os testes de API definidos com o Karate Framework, utilizando variáveis de ambiente (secrets) para `BASEURL`, `USER_EMAIL` e `USER_PASSWORD`.
 
 O status da execução da pipeline pode ser visualizado na seção "Actions" do repositório GitHub, onde você pode ver os detalhes de cada execução, incluindo logs e resultados dos testes.
 

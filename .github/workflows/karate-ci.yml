@@ -1,14 +1,9 @@
-name: Testes Karate
+name: Karate CI Tests
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: [push]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +14,13 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+
     - name: Build with Maven
       run: mvn clean install -DskipTests
-    - name: Run Karate Tests
+
+    - name: Run Karate tests
+      env:
+        KARATE_BASE_URL: ${{ secrets.BASEURL }}
+        KARATE_USER_EMAIL: ${{ secrets.USER_EMAIL }}
+        KARATE_USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
       run: mvn test
